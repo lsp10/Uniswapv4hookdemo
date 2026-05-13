@@ -1,15 +1,61 @@
-# Remix compiler artifacts
-**/artifacts/
-**/artifacts/**
+# ─── Foundry 编译与缓存 ──────────────────────────────────────────
+# 编译产物（forge build 生成）
+out/
+out-optimized/
 
-# Remix plugin state folders
+# Foundry 内部缓存
+cache/
+cache_forge/
+
+# 快照文件
+snapshots/
+.gas-snapshot
+
+# ─── 部署记录（含敏感信息）────────────────────────────────────────
+# broadcast 目录包含交易哈希和私钥相关信息，不应提交
+broadcast/
+
+# ─── 环境变量与密钥 ──────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ─── 依赖（通过 git submodule 管理，无需追踪内容）────────────────
+# lib/ 目录由 .gitmodules 管理，不需要忽略
+# 但忽略各子模块自己的编译产物
+lib/**/out/
+lib/**/cache/
+lib/**/broadcast/
+
+# ─── IDE 与编辑器 ────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ─── Node.js（如有前端）──────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── TypeScript 构建产物 ─────────────────────────────────────────
+*.tsbuildinfo
+dist/
+build/
+
+# ─── 调试信息 ────────────────────────────────────────────────────
+*.dbg.json
+
+# ─── Remix 遗留规则 ──────────────────────────────────────────────
+**/artifacts/
 deps/
 states/
 
-# Debug info
-*.dbg.json
-*.tsbuildinfo
-
-# Optional
-.env
-.env.local
+# ─── Foundry fuzz 测试失败记录 ───────────────────────────────────
+cache/fuzz/
